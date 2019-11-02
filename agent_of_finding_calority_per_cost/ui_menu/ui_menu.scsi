@@ -1,0 +1,19 @@
+ui_menu_file_for_finding_calories_per_cost 
+	<- 	ui_user_command_class_atom; 
+		ui_user_command_class_view_kb;
+	=> nrel_main_idtf: 
+		[Какое отношение калорийности к стоимости?] (* <- lang_ru;; *);
+		[What is calories per cost?] (* <- lang_en;; *);
+	=> ui_nrel_command_template:
+		[*
+		question_finding_calories_per_cost _-> ._question_finding_calories_per_cost
+			(*
+				_-> ui_arg_1;;
+			*);;
+		._question_finding_calories_per_cost _<- question;;
+		*];
+	=> ui_nrel_command_lang_template: 
+		[Запрос нахождения отношения калорийности к стоимости: $ui_arg_1] 
+		(* <- lang_ru;; *);
+		[What calories per cost $ui_arg_1] 
+		(* <- lang_en;; *);;

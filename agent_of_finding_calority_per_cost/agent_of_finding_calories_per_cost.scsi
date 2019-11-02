@@ -1,0 +1,118 @@
+agent_of_finding_calories_per_cost
+=> nrel_main_idtf:
+	[агентная scp-программа нахождения отношения калорийности к стоимости] 
+	(* <- lang_ru;; *);
+	[agent scp-program of relation of calories to cost] 
+	(* <- lang_en;; *);
+<- agent_scp_program;;
+
+scp_program -> agent_of_finding_calories_per_cost (*
+
+	-> rrel_params: .agent_of_finding_calories_per_cost_params (*
+		-> rrel_1: rrel_in: _event;;
+		-> rrel_2: rrel_in: _input_arc;;
+		*);;
+
+	-> rrel_operators: .agent_of_finding_calories_per_cost_set (*
+		-> rrel_init: .agent_of_finding_calories_per_init (*
+			<- searchElStr3;;
+			-> rrel_1: rrel_assign: rrel_scp_var: _temp;;
+			-> rrel_2: rrel_fixed: rrel_scp_var: _input_arc;;
+			-> rrel_3: rrel_assign: rrel_scp_var: _quest;;
+			=>nrel_goto: .agent_of_finding_calories_per_cost2;;
+		*);;
+
+		-> .agent_of_finding_calories_per_cost2 (*
+			<- searchElStr3;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: question_finding_calories_per_cost;;
+			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc;;
+			-> rrel_3: rrel_fixed: rrel_scp_var: _quest;;
+			=>nrel_then: .agent_of_finding_calories_per_cost3;;
+			=>nrel_else: .agent_of_finding_calories_per_cost_return;;
+		*);;
+
+		-> .agent_of_finding_calories_per_cost3 (*
+			<- printNl;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: [агент нахождения отношения калорийности к стоимости];;
+			=> nrel_goto: .agent_of_finding_calories_per_cost4;;
+   		*);;
+
+   		-> .agent_of_finding_calories_per_cost4 (*
+			<- searchElStr3;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _quest;;
+			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc;;
+			-> rrel_3: rrel_assign: rrel_scp_var: _product;;
+			=>nrel_then: .agent_of_finding_calories_per_cost5;;
+			=>nrel_else: .agent_of_finding_calories_per_cost_return;;
+		*);;
+
+		-> .agent_of_finding_calories_per_cost5 (*
+            <- call;;
+            -> rrel_1: rrel_fixed: rrel_scp_const: proc_of_finding_calories_per_cost;;
+            -> rrel_2: ... (*
+                -> rrel_1: rrel_fixed: rrel_scp_var: _product;;
+                -> rrel_2: rrel_assign: rrel_scp_var: _current;;
+            *);;
+            -> rrel_3: rrel_assign: rrel_scp_var: _argument;;
+            => nrel_goto: .agent_of_finding_calories_per_cost6;;
+        *);;
+
+        ->.agent_of_finding_calories_per_cost6 (*
+            <- waitReturn;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _argument;;
+            => nrel_goto: .agent_of_finding_calories_per_cost7;;
+        *);;
+
+        -> .agent_of_finding_calories_per_cost7 (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _var_nrel;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: nrel_power_set;;
+            => nrel_goto: .agent_of_finding_calories_per_cost8;;
+        *);;
+
+        -> .agent_of_finding_calories_per_cost8 (*
+            <- call;;
+            -> rrel_1: rrel_fixed: rrel_scp_const: proc_add_five_elements;;
+            -> rrel_2: ... (*
+                -> rrel_1: rrel_fixed: rrel_scp_var: _product;;
+                -> rrel_2: rrel_fixed: rrel_scp_var: _var_nrel;;
+                -> rrel_3: rrel_fixed: rrel_scp_var: _current;;
+                -> rrel_4: rrel_assign: rrel_scp_var: _answer;;
+            *);;
+            -> rrel_3: rrel_assign: rrel_scp_var: _argumentq;;
+            => nrel_goto: .agent_of_finding_calories_per_cost9;;
+        *);;
+
+        ->.agent_of_finding_calories_per_cost9 (*
+            <- waitReturn;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _argumentq;;
+            => nrel_goto: .agent_of_finding_calories_per_init0A;;
+        *);;
+
+        -> .agent_of_finding_calories_per_init0A (*
+		  <- searchSetStr3;;
+		  -> rrel_1: rrel_fixed: rrel_scp_var: _product;;
+		  -> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc;;
+		  -> rrel_3: rrel_assign: rrel_scp_var: _els;;
+
+          -> rrel_set_2: rrel_fixed: rrel_scp_var: _answer;;
+          -> rrel_set_3: rrel_fixed: rrel_scp_var: _answer;;
+
+		  => nrel_goto: .agent_of_finding_calories_per_generate_answer;;
+		*);;
+
+		-> .agent_of_finding_calories_per_generate_answer (*
+			<- genElStr5;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _quest;;
+			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_const: rrel_scp_var: _arc;;
+			-> rrel_3: rrel_fixed: rrel_scp_var: _answer;;
+			-> rrel_4: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
+			-> rrel_5: rrel_fixed: rrel_scp_const: nrel_answer;;
+			=>nrel_goto: .agent_of_finding_calories_per_cost_return;;
+		*);;
+	
+		-> .agent_of_finding_calories_per_cost_return (*
+			<- return;;
+		*);;
+	*);;
+*);;

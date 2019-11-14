@@ -1,5 +1,5 @@
 sc_node_norole_relation->nrel_storage_condition;;
-nrel_fats=>nrel_main_idtf:
+nrel_storage_condition=>nrel_main_idtf:
 [условия хранения*](* <-lang_ru;; *);;
 
 concept_beef=>nrel_idtf:[beef] (* <- lang_en;; *);;

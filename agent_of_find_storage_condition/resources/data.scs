@@ -1,0 +1,18 @@
+sc_node_norole_relation->nrel_storage_condition;;
+nrel_fats=>nrel_main_idtf:
+[условия хранения*](* <-lang_ru;; *);;
+
+concept_beef=>nrel_idtf:[beef] (* <- lang_en;; *);;
+concept_beef=>nrel_main_idtf:[говядина] (* <- lang_ru;; *);;
+
+concept_beef=>nrel_storage_condition:[-5];;
+
+concept_milk=>nrel_idtf:[milk] (* <- lang_en;; *);;
+concept_milk=>nrel_main_idtf:[молоко] (* <- lang_ru;; *);;
+
+concept_milk=>nrel_storage_condition:[5];;
+
+concept_bread=>nrel_idtf:[bread] (* <- lang_en;; *);;
+concept_bread=>nrel_main_idtf:[хлеб] (* <- lang_ru;; *);;
+
+concept_bread=>nrel_storage_condition:[21];;

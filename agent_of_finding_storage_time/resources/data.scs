@@ -7,3 +7,13 @@ concept_cheese=>nrel_main_idtf:[сыр] (* <- lang_ru;; *);;
 
 concept_cheese=>nrel_storage_time:[30];;
 
+concept_cake=>nrel_idtf:[cake] (* <- lang_en;; *);;
+concept_cake=>nrel_main_idtf:[пирожное] (* <- lang_ru;; *);;
+
+concept_cake=>nrel_storage_time:[2];;
+
+concept_pasta=>nrel_idtf:[pasta] (* <- lang_en;; *);;
+concept_pasta=>nrel_main_idtf:[макароны] (* <- lang_ru;; *);;
+
+concept_pasta=>nrel_storage_time:[700];;
+

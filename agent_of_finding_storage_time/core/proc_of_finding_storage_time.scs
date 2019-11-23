@@ -13,10 +13,46 @@ scp_program -> proc_of_finding_storage_time (*
             -> rrel_4: rrel_assign: rrel_scp_var:   rrel_pos_const_perm: _arc2;;
             -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_storage_time;;
 
-            => nrel_then: .proc_of_finding_storage_time_show_answer;;
+            => nrel_then: .proc_of_finding_storage_time_check1;;
             => nrel_else: .proc_of_finding_storage_time_return;;
         *);;
 
+	-> .proc_of_finding_storage_time_check1 (*
+            <- ifGr;;
+	    ->rrel_1: rrel_fixed: rrel_scp_var:  _storage_time;;
+	    ->rrel_2: rrel_fixed: rrel_scp_const: [4];;
+            => nrel_then: .proc_of_finding_storage_time_check2;;
+            => nrel_else: .proc_of_finding_storage_time_print1;;
+        *);;
+
+	-> .proc_of_finding_storage_time_check2 (*
+            <- ifGr;;
+	    ->rrel_1: rrel_fixed: rrel_scp_var:  _storage_time;;
+	    ->rrel_2: rrel_fixed: rrel_scp_const: [31];;
+            => nrel_then: .proc_of_finding_storage_time_print3;;
+            => nrel_else: .proc_of_finding_storage_time_print2;;
+        *);;
+
+	-> .proc_of_finding_storage_time_print1 (*
+            <- varAssign;;
+	    ->rrel_1: rrel_assign: rrel_scp_var:  _storage_time;;
+	    ->rrel_2: rrel_fixed: rrel_scp_const: [Ультраскоропортящиеся];;
+            => nrel_goto: .proc_of_finding_storage_time_show_answer;;
+        *);;	
+
+	-> .proc_of_finding_storage_time_print2 (*
+            <- varAssign;;
+	    ->rrel_1: rrel_assign: rrel_scp_var:  _storage_time;;
+	    ->rrel_2: rrel_fixed: rrel_scp_const: [Скоропортящиеся];;
+            => nrel_goto: .proc_of_finding_storage_time_show_answer;;
+        *);;
+
+	-> .proc_of_finding_storage_time_print3 (*
+            <- varAssign;;
+	    ->rrel_1: rrel_assign: rrel_scp_var:  _storage_time;;
+	    ->rrel_2: rrel_fixed: rrel_scp_const: [Длительного хранения];;
+            => nrel_goto: .proc_of_finding_storage_time_show_answer;;
+        *);;
 
 		-> .proc_of_finding_storage_time_show_answer (*
             <- genElStr5;;

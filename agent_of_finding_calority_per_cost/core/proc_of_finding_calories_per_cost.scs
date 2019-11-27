@@ -5,7 +5,25 @@ scp_program -> proc_of_finding_calories_per_cost (*
   	*);;
   
 	-> rrel_operators: ...(*
-		-> rrel_init: .proc_of_finding_calories_per_cost_find_calories (*
+
+		-> rrel_init: .proc_of_finding_calories_per_cost_find_calories_is_product (*
+            <- searchElStr3;;
+            -> rrel_1: rrel_fixed:  rrel_scp_const: concept_product;;
+            -> rrel_2: rrel_assign: rrel_scp_var: _arc0;;
+            -> rrel_3: rrel_fixed:  rrel_scp_var: _product;;
+
+            => nrel_then: .proc_of_finding_calories_per_cost_find_calories;;
+            => nrel_else: .proc_of_finding_calories_per_cost_not_product;;
+        *);;
+
+        -> .proc_of_finding_calories_per_cost_not_product (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _calories_per_cost;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [это не продукт];;
+            => nrel_goto: .proc_of_finding_calories_per_cost_show_answer;;
+        *);;
+
+		-> .proc_of_finding_calories_per_cost_find_calories (*
             <- searchElStr5;;
             -> rrel_1: rrel_fixed:  rrel_scp_var:   _product;;
             -> rrel_2: rrel_assign: rrel_scp_var:   rrel_common: _arc1;;
@@ -14,7 +32,14 @@ scp_program -> proc_of_finding_calories_per_cost (*
             -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_calories;;
 
             => nrel_then: .proc_of_finding_calories_per_cost_find_cost;;
-            => nrel_else: .proc_of_finding_calories_per_cost_return;;
+            => nrel_else: .proc_of_finding_calories_per_cost_no_calories;;
+        *);;
+
+        -> .proc_of_finding_calories_per_cost_no_calories (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _calories_per_cost;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [не указаны калории];;
+            => nrel_goto: .proc_of_finding_calories_per_cost_show_answer;;
         *);;
 
         -> .proc_of_finding_calories_per_cost_find_cost (*
@@ -26,7 +51,14 @@ scp_program -> proc_of_finding_calories_per_cost (*
             -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_cost;;
 
             => nrel_then: .proc_of_finding_calories_per_cost_divide;;
-            => nrel_else: .proc_of_finding_calories_per_cost_return;;
+            => nrel_else: .proc_of_finding_calories_per_cost_no_cost;;
+        *);;
+
+        -> .proc_of_finding_calories_per_cost_no_cost (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _calories_per_cost;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [не указана стоимость];;
+            => nrel_goto: .proc_of_finding_calories_per_cost_show_answer;;
         *);;
 
         -> .proc_of_finding_calories_per_cost_divide (*
@@ -41,10 +73,10 @@ scp_program -> proc_of_finding_calories_per_cost (*
 		-> .proc_of_finding_calories_per_cost_show_answer (*
             <- genElStr5;;
             -> rrel_1: rrel_fixed: rrel_scp_var: _product;;
-            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc1;;
+            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc5;;
             -> rrel_3: rrel_scp_var: rrel_fixed: _calories_per_cost;;
-            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc2;;
-            -> rrel_5: rrel_fixed: rrel_scp_const: nrel_power_set;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc6;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: nrel_calories_per_cost;;
 
             => nrel_goto: .proc_of_finding_calories_per_cost_return;;
         *);;		

@@ -1,0 +1,177 @@
+scp_program -> proc_of_finding_statistic (*
+	-> rrel_params: ...(*
+    	-> rrel_1: rrel_in:  _concept;;
+	   	-> rrel_2: rrel_out: _statistic;;
+  	*);;
+  
+	-> rrel_operators: ...(*
+
+        -> rrel_init: .proc_of_finding_statistic_find_elements (*
+            <- searchSetStr3;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var: _concept;;
+            -> rrel_2: rrel_assign: rrel_scp_var: rrel_pos_const_perm: _arc0;;
+            -> rrel_3: rrel_assign:  rrel_scp_var: _element;;
+
+            ->rrel_set_3: rrel_assign: rrel_scp_var: _elements;;
+
+            => nrel_then: .proc_of_finding_statistic_initialize;;
+            => nrel_else: .proc_of_finding_statistic_no_elements;;
+        *);;
+
+        -> .proc_of_finding_statistic_no_elements (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _statistic;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [понятий не найдено];;
+            => nrel_goto: .proc_of_finding_statistic_show_answer;;
+        *);;
+
+        -> .proc_of_finding_statistic_initialize (*
+            <- genEl;;
+            -> rrel_1: rrel_assign: rrel_node: rrel_scp_var: _statistic;;
+            => nrel_goto: .proc_of_finding_statistic_initialize_total;;
+        *);;
+
+        -> .proc_of_finding_statistic_initialize_total (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_node: rrel_scp_var: _total;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [0];;
+            => nrel_goto: .proc_of_finding_statistic_initialize_with_definitions;;
+        *);;
+
+        -> .proc_of_finding_statistic_initialize_with_definitions (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_node: rrel_scp_var: _with;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [0];;
+            => nrel_goto: .proc_of_finding_statistic_initialize_without_definitions;;
+        *);;
+
+        -> .proc_of_finding_statistic_initialize_without_definitions (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_node: rrel_scp_var: _without;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [0];;
+            => nrel_goto: .proc_of_finding_statistic_get_element;;
+        *);;
+
+        -> .proc_of_finding_statistic_get_element (*
+            <- searchElStr3;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _elements;;
+            -> rrel_2: rrel_assign: rrel_scp_var: _deleted_arc;;
+            -> rrel_3: rrel_assign: rrel_scp_var: _element;;
+            => nrel_then: .proc_of_finding_statistic_delete_element;;
+            => nrel_else: .proc_of_finding_statistic_calculate_statistic;;
+        *);;
+
+        -> .proc_of_finding_statistic_delete_element (*
+            <- eraseEl;;
+            -> rrel_1: rrel_fixed: rrel_erase: rrel_scp_var: _deleted_arc;;
+            => nrel_goto: .proc_of_finding_statistic_if_exist_key_element;;    
+        *);;
+
+        -> .proc_of_finding_statistic_if_exist_key_element (*
+            <- searchElStr5;;
+            -> rrel_1: rrel_assign:  rrel_scp_var: _key_element;;
+            -> rrel_2: rrel_assign: rrel_scp_var: _arc0;;
+            -> rrel_3: rrel_fixed:  rrel_scp_var: _element;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc6;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: rrel_key_sc_element;;
+
+            => nrel_then: .proc_of_finding_statistic_increment_with;;
+            => nrel_else: .proc_of_finding_statistic_increment_without;;
+        *);;
+
+        -> .proc_of_finding_statistic_increment_with (*
+            <- contAdd;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _with;;
+            -> rrel_2: rrel_fixed: rrel_scp_var: _with;;
+            -> rrel_3: rrel_fixed: rrel_scp_const: [1];;
+
+            => nrel_goto: .proc_of_finding_statistic_increment_total;;
+        *);;
+
+        -> .proc_of_finding_statistic_increment_without (*
+            <- contAdd;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _without;;
+            -> rrel_2: rrel_fixed: rrel_scp_var: _without;;
+            -> rrel_3: rrel_fixed: rrel_scp_const: [1];;
+
+            => nrel_goto: .proc_of_finding_statistic_increment_total;;
+        *);;
+
+        -> .proc_of_finding_statistic_increment_total (*
+            <- contAdd;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _total;;
+            -> rrel_2: rrel_fixed: rrel_scp_var: _total;;
+            -> rrel_3: rrel_fixed: rrel_scp_const: [1];;
+
+            => nrel_goto: .proc_of_finding_statistic_get_element;;
+        *);;
+
+         -> .proc_of_finding_statistic_calculate_statistic (*
+            <- contDiv;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _relation;;
+            -> rrel_2: rrel_fixed: rrel_scp_var:  _with;;
+            -> rrel_3: rrel_fixed: rrel_scp_var:  _total;;
+
+            => nrel_goto: .proc_of_finding_statistic_add_total;;
+        *);;
+
+        -> .proc_of_finding_statistic_add_total (*
+            <- genElStr5;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _statistic;;
+            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc5;;
+            -> rrel_3: rrel_scp_var: rrel_fixed: _total;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc6;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: nrel_total_statistic;;
+
+            => nrel_goto: .proc_of_finding_statistic_add_with;;
+        *);;
+
+        -> .proc_of_finding_statistic_add_with (*
+            <- genElStr5;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _statistic;;
+            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc5;;
+            -> rrel_3: rrel_scp_var: rrel_fixed: _with;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc6;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: nrel_with_statistic;;
+
+            => nrel_goto: .proc_of_finding_statistic_add_without;;
+        *);;
+
+        -> .proc_of_finding_statistic_add_without (*
+            <- genElStr5;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _statistic;;
+            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc5;;
+            -> rrel_3: rrel_scp_var: rrel_fixed: _without;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc6;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: nrel_without_statistic;;
+
+            => nrel_goto: .proc_of_finding_statistic_add_relation;;
+        *);;
+
+        -> .proc_of_finding_statistic_add_relation (*
+            <- genElStr5;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _statistic;;
+            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc5;;
+            -> rrel_3: rrel_scp_var: rrel_fixed: _relation;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc6;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: nrel_relation_statistic;;
+
+            => nrel_goto: .proc_of_finding_statistic_show_answer;;
+        *);;
+
+        -> .proc_of_finding_statistic_show_answer (*
+            <- genElStr5;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _concept;;
+            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc5;;
+            -> rrel_3: rrel_scp_var: rrel_fixed: _statistic;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc6;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: nrel_statistic;;
+
+            => nrel_goto: .proc_of_finding_statistic_return;;
+        *);;        
+
+        -> .proc_of_finding_statistic_return (*
+           <- return;;
+        *);;
+    *);;
+*);;

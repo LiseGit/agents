@@ -1,0 +1,32 @@
+sc_node_norole_relation->nrel_products_without_definition;;
+nrel_products_without_definition=>nrel_main_idtf:
+[продукты без определения*](* <-lang_ru;; *);;
+
+concept_product->concept_orange;;
+
+concept_orange=>nrel_idtf:[orange] (* <- lang_en;; *);;
+concept_orange=>nrel_main_idtf:[апельсин] (* <- lang_ru;; *);;
+
+concept_orange<-rrel_key_sc_element:... (*
+		<-definition;;
+		=>nrel_main_idtf:[Опр.(апельсин)] (* <- lang_ru;; *);;
+		<=nrel_sc_text_translation:...
+	(*
+        ->[Апельсин - фрукт.](* <- lang_ru;; *);;
+	*);;
+*);;
+
+
+concept_product->concept_apple;;
+
+concept_apple=>nrel_idtf:[apple] (* <- lang_en;; *);;
+concept_apple=>nrel_main_idtf:[яблоко] (* <- lang_ru;; *);;
+
+concept_apple<-rrel_key_sc_element:... (*
+		<-definition;;
+		=>nrel_main_idtf:[Опр.(яблоко)] (* <- lang_ru;; *);;
+		<=nrel_sc_text_translation:...
+	(*
+        ->[Яблоко - фрукт.](* <- lang_ru;; *);;
+	*);;
+*);;

@@ -1,0 +1,19 @@
+sc_node_norole_relation->nrel_statistic;;
+nrel_statistic=>nrel_main_idtf:
+[статистика понятий*](* <-lang_ru;; *);;
+
+sc_node_norole_relation->nrel_relation_statistic;;
+nrel_relation_statistic=>nrel_main_idtf:
+[отношение понятий с определением ко всем понятиям*](* <-lang_ru;; *);;
+
+sc_node_norole_relation->nrel_without_statistic;;
+nrel_without_statistic=>nrel_main_idtf:
+[понятий без определений*](* <-lang_ru;; *);;
+
+sc_node_norole_relation->nrel_with_statistic;;
+nrel_with_statistic=>nrel_main_idtf:
+[понятий с определениями*](* <-lang_ru;; *);;
+
+sc_node_norole_relation->nrel_total_statistic;;
+nrel_total_statistic=>nrel_main_idtf:
+[общее количество понятий*](* <-lang_ru;; *);;

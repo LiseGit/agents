@@ -1,76 +1,76 @@
-agent_of_finding_average_fpc
+agent_of_finding_daily_fats
 => nrel_main_idtf:
-	[агентная scp-программа нахождения среднего арифмитического жиров, белков и углеводов] 
+	[агентная scp-программа нахождения количества продукта для восполнения ежедневной необходимости жиров] 
 	(* <- lang_ru;; *);
-	[agent scp-program of finding average arithmetical of fats, proteins and carbohydrates] 
+	[agent scp-program of finding nesessary amount of product for daily fats] 
 	(* <- lang_en;; *);
 <- agent_scp_program;;
 
-scp_program -> agent_of_finding_average_fpc (*
+scp_program -> agent_of_finding_daily_fats (*
 
-	-> rrel_params: .agent_of_finding_average_fpc_params (*
+	-> rrel_params: .agent_of_finding_daily_fats_params (*
 		-> rrel_1: rrel_in: _event;;
 		-> rrel_2: rrel_in: _input_arc;;
 		*);;
 
-	-> rrel_operators: .agent_of_finding_average_fpc_set (*
-		-> rrel_init: .agent_of_finding_average_fpc_init (*
+	-> rrel_operators: .agent_of_finding_daily_fats_set (*
+		-> rrel_init: .agent_of_finding_daily_fats_init (*
 			<- searchElStr3;;
 			-> rrel_1: rrel_assign: rrel_scp_var: _temp;;
 			-> rrel_2: rrel_fixed: rrel_scp_var: _input_arc;;
 			-> rrel_3: rrel_assign: rrel_scp_var: _quest;;
-			=>nrel_goto: .agent_of_finding_average_fpc2;;
+			=>nrel_goto: .agent_of_finding_daily_fats2;;
 		*);;
 
-		-> .agent_of_finding_average_fpc2 (*
+		-> .agent_of_finding_daily_fats2 (*
 			<- searchElStr3;;
-			-> rrel_1: rrel_fixed: rrel_scp_const: question_finding_average_fpc;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: question_finding_daily_fats;;
 			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _quest;;
-			=>nrel_then: .agent_of_finding_average_fpc3;;
-			=>nrel_else: .agent_of_finding_average_fpc_return;;
+			=>nrel_then: .agent_of_finding_daily_fats3;;
+			=>nrel_else: .agent_of_finding_daily_fats_return;;
 		*);;
 
-		-> .agent_of_finding_average_fpc3 (*
+		-> .agent_of_finding_daily_fats3 (*
 			<- printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [агент нахождения среднего арифмитического жиров, белков и углеводов];;
-			=> nrel_goto: .agent_of_finding_average_fpc4;;
+			=> nrel_goto: .agent_of_finding_daily_fats4;;
    		*);;
 
-   		-> .agent_of_finding_average_fpc4 (*
+   		-> .agent_of_finding_daily_fats4 (*
 			<- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _quest;;
 			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc;;
 			-> rrel_3: rrel_assign: rrel_scp_var: _product;;
-			=>nrel_then: .agent_of_finding_average_fpc5;;
-			=>nrel_else: .agent_of_finding_average_fpc_return;;
+			=>nrel_then: .agent_of_finding_daily_fats5;;
+			=>nrel_else: .agent_of_finding_daily_fats_return;;
 		*);;
 
-		-> .agent_of_finding_average_fpc5 (*
+		-> .agent_of_finding_daily_fats5 (*
             <- call;;
-            -> rrel_1: rrel_fixed: rrel_scp_const: proc_of_finding_average_fpc;;
+            -> rrel_1: rrel_fixed: rrel_scp_const: proc_of_finding_daily_fats;;
             -> rrel_2: ... (*
                 -> rrel_1: rrel_fixed: rrel_scp_var: _product;;
                 -> rrel_2: rrel_assign: rrel_scp_var: _current;;
             *);;
             -> rrel_3: rrel_assign: rrel_scp_var: _argument;;
-            => nrel_goto: .agent_of_finding_average_fpc6;;
+            => nrel_goto: .agent_of_finding_daily_fats6;;
         *);;
 
-        ->.agent_of_finding_average_fpc6 (*
+        ->.agent_of_finding_daily_fats6 (*
             <- waitReturn;;
             -> rrel_1: rrel_fixed: rrel_scp_var: _argument;;
-            => nrel_goto: .agent_of_finding_average_fpc7;;
+            => nrel_goto: .agent_of_finding_daily_fats7;;
         *);;
 
-        -> .agent_of_finding_average_fpc7 (*
+        -> .agent_of_finding_daily_fats7 (*
             <- varAssign;;
             -> rrel_1: rrel_assign: rrel_scp_var: _var_nrel;;
             -> rrel_2: rrel_fixed: rrel_scp_const: nrel_power_set;;
-            => nrel_goto: .agent_of_finding_average_fpc8;;
+            => nrel_goto: .agent_of_finding_daily_fats8;;
         *);;
 
-        -> .agent_of_finding_average_fpc8 (*
+        -> .agent_of_finding_daily_fats8 (*
             <- call;;
             -> rrel_1: rrel_fixed: rrel_scp_const: proc_add_five_elements;;
             -> rrel_2: ... (*
@@ -80,16 +80,16 @@ scp_program -> agent_of_finding_average_fpc (*
                 -> rrel_4: rrel_assign: rrel_scp_var: _answer;;
             *);;
             -> rrel_3: rrel_assign: rrel_scp_var: _argumentq;;
-            => nrel_goto: .agent_of_finding_average_fpc9;;
+            => nrel_goto: .agent_of_finding_daily_fats9;;
         *);;
 
-        ->.agent_of_finding_average_fpc9 (*
+        ->.agent_of_finding_daily_fats9 (*
             <- waitReturn;;
             -> rrel_1: rrel_fixed: rrel_scp_var: _argumentq;;
-            => nrel_goto: .agent_of_finding_average_fpc_init0A;;
+            => nrel_goto: .agent_of_finding_daily_fats_init0A;;
         *);;
 
-        -> .agent_of_finding_average_fpc_init0A (*
+        -> .agent_of_finding_daily_fats_init0A (*
 		  <- searchSetStr3;;
 		  -> rrel_1: rrel_fixed: rrel_scp_var: _product;;
 		  -> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc;;
@@ -98,20 +98,20 @@ scp_program -> agent_of_finding_average_fpc (*
           -> rrel_set_2: rrel_fixed: rrel_scp_var: _answer;;
           -> rrel_set_3: rrel_fixed: rrel_scp_var: _answer;;
 
-		  => nrel_goto: .agent_of_finding_average_fpc_generate_answer;;
+		  => nrel_goto: .agent_of_finding_daily_fats_generate_answer;;
 		*);;
 
-		-> .agent_of_finding_average_fpc_generate_answer (*
+		-> .agent_of_finding_daily_fats_generate_answer (*
 			<- genElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _quest;;
 			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_const: rrel_scp_var: _arc;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _answer;;
 			-> rrel_4: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
 			-> rrel_5: rrel_fixed: rrel_scp_const: nrel_answer;;
-			=>nrel_goto: .agent_of_finding_average_fpc_return;;
+			=>nrel_goto: .agent_of_finding_daily_fats_return;;
 		*);;
 	
-		-> .agent_of_finding_average_fpc_return (*
+		-> .agent_of_finding_daily_fats_return (*
 			<- return;;
 		*);;
 	*);;

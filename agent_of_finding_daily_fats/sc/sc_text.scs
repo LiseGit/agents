@@ -10,4 +10,4 @@ sc_text_of_agent_of_finding_average_fpc
 	[sc-text scp-agent based program of finding nesessary amount of product for daily fats] 
 	(* <- lang_en;; *);;
 
-sc_text_of_agent_of_finding_average_fpc = [*^"file://../agent_of_finding_dayli_fats.scsi"*];;
+sc_text_of_agent_of_finding_average_fpc = [*^"file://../agent_of_finding_daily_fats.scsi"*];;

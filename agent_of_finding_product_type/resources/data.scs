@@ -1,0 +1,22 @@
+concept_apple=>nrel_idtf:[apple] (* <- lang_en;; *);;
+concept_apple=>nrel_main_idtf:[яблоко] (* <- lang_ru;; *);;
+
+concept_lemon=>nrel_idtf:[lemon] (* <- lang_en;; *);;
+concept_lemon=>nrel_main_idtf:[лемон] (* <- lang_ru;; *);;
+
+concept_fruit->concept_lemon;;
+concept_fruit->concept_apple;;
+
+concept_carrot=>nrel_idtf:[carrot] (* <- lang_en;; *);;
+concept_carrot=>nrel_main_idtf:[морковка] (* <- lang_ru;; *);;
+
+concept_potato=>nrel_idtf:[potato] (* <- lang_en;; *);;
+concept_potato=>nrel_main_idtf:[картошка] (* <- lang_ru;; *);;
+
+concept_vegetable->concept_carrot;;
+concept_vegetable->concept_potato;;
+
+sc_node_norole_relation->nrel_recepts;;
+nrel_recepts=>nrel_main_idtf:
+[продукты выбранного типа*](* <-lang_ru;; *);;
+

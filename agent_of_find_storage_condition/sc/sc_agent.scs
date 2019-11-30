@@ -1,8 +1,8 @@
 sc_agent_of_finding_storage_condition
 => nrel_main_idtf:
-	[sc-агент нахождения срока годности продукта] 
+	[sc-агент нахождения условий хранения продукта] 
 	(* <- lang_ru;; *);
-	[sc-agent of finding storage time of a product] 
+	[sc-agent of finding storage conditions of a product] 
 	(* <- lang_en;; *);
 
 <- abstract_sc_agent;

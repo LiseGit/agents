@@ -2,6 +2,10 @@ sc_node_norole_relation->nrel_storage_condition;;
 nrel_storage_condition=>nrel_main_idtf:
 [условия хранения*](* <-lang_ru;; *);;
 
+sc_node_norole_relation->nrel_storage_temperature;;
+nrel_storage_temperature=>nrel_main_idtf:
+[температура*](* <-lang_ru;; *);;
+
 concept_beef=>nrel_idtf:[beef] (* <- lang_en;; *);;
 concept_beef=>nrel_main_idtf:[говядина] (* <- lang_ru;; *);;
 
@@ -16,3 +20,18 @@ concept_bread=>nrel_idtf:[bread] (* <- lang_en;; *);;
 concept_bread=>nrel_main_idtf:[хлеб] (* <- lang_ru;; *);;
 
 concept_bread=>nrel_storage_condition:[21];;
+
+concept_freezer=>nrel_idtf:[freezer] (* <- lang_en;; *);;
+concept_freezer=>nrel_main_idtf:[морозилка] (* <- lang_ru;; *);;
+
+concept_freezer=>nrel_storage_temperature:[-5];;
+
+concept_colder=>nrel_idtf:[colder] (* <- lang_en;; *);;
+concept_colder=>nrel_main_idtf:[холодильник] (* <- lang_ru;; *);;
+
+concept_colder=>nrel_storage_temperature:[5];;
+
+concept_room_temperature=>nrel_idtf:[room temperature] (* <- lang_en;; *);;
+concept_room_temperature=>nrel_main_idtf:[комантная температура] (* <- lang_ru;; *);;
+
+concept_room_temperature=>nrel_storage_temperature:[21];;

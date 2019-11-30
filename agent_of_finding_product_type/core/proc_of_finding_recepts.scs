@@ -1,0 +1,112 @@
+scp_program -> proc_of_finding_recepts (*
+	-> rrel_params: ...(*
+        -> rrel_1: rrel_in: _concept_product;;
+	   	-> rrel_2: rrel_out: _recepts;;
+  	*);;
+  
+	-> rrel_operators: ...(*
+
+		-> rrel_init: .proc_of_finding_recepts_find_products (*
+            <- searchSetStr3;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var: _concept_product;;
+            -> rrel_2: rrel_assign: rrel_scp_var: rrel_pos_const_perm: _arc0;;
+            -> rrel_3: rrel_assign:  rrel_scp_var: _product;;
+
+            ->rrel_set_3: rrel_assign: rrel_scp_var: _products;;
+
+            => nrel_then: .proc_of_finding_recepts_initialize;;
+            => nrel_else: .proc_of_finding_recepts_no_products;;
+        *);;
+
+        -> .proc_of_finding_recepts_no_products (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _recepts;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [продуктов не найдено];;
+            => nrel_goto: .proc_of_finding_recepts_show_answer;;
+        *);;
+
+		-> .proc_of_finding_recepts_initialize (*
+            <- genEl;;
+            -> rrel_1: rrel_assign: rrel_node: rrel_scp_var: _recepts;;
+            => nrel_goto: .proc_of_finding_recepts_initialize2;;
+        *);;
+
+        -> .proc_of_finding_recepts_initialize2 (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _numbers;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [0];;
+            => nrel_goto: .proc_of_finding_recepts_adding;;
+        *);;
+
+        -> .proc_of_finding_recepts_adding (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _addingVar;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [1];;
+            => nrel_goto: .proc_of_finding_recepts_erase_numbers;;
+        *);;
+
+        -> .proc_of_finding_recepts_erase_numbers (*
+            <- contMult;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _numbers;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [0];;
+            -> rrel_3: rrel_fixed: rrel_scp_var: _numbers;;
+            => nrel_goto: .proc_of_finding_recepts_get_product;;
+        *);;
+
+        -> .proc_of_finding_recepts_get_product (*
+            <- searchElStr3;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _products;;
+            -> rrel_2: rrel_assign: rrel_scp_var: _deleted_arc;;
+            -> rrel_3: rrel_assign: rrel_scp_var: _product;;
+            => nrel_then: .proc_of_finding_recepts_delete_product;;
+            => nrel_else: .proc_of_finding_recepts_add_new;;
+        *);;
+
+        -> .proc_of_finding_recepts_delete_product (*
+            <- eraseEl;;
+            -> rrel_1: rrel_fixed: rrel_erase: rrel_scp_var: _deleted_arc;;
+            => nrel_goto: .proc_of_finding_recepts_add_product;;    
+        *);;
+
+
+        -> .proc_of_finding_recepts_add_product (*
+            <- genElStr3;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _recepts;;
+            -> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc1;;
+            -> rrel_3: rrel_fixed: rrel_scp_var: _product;;
+            => nrel_goto: .proc_of_finding_recepts_add_one;;
+        *);;
+
+        -> .proc_of_finding_recepts_add_one (*
+            <- contAdd;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _numbers;;
+            -> rrel_2: rrel_fixed: rrel_scp_var: _numbers;;
+            -> rrel_3: rrel_fixed: rrel_scp_var: _addingVar;;
+            => nrel_goto: .proc_of_finding_recepts_get_product;;
+        *);;
+
+        -> .proc_of_finding_recepts_add_new (*
+            <- genElStr3;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _recepts;;
+            -> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
+            -> rrel_3: rrel_fixed: rrel_scp_var: _numbers;;
+            => nrel_goto: .proc_of_finding_recepts_show_answer;;
+        *);;
+
+		-> .proc_of_finding_recepts_show_answer (*
+            <- genElStr5;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _concept_product;;
+            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc5;;
+            -> rrel_3: rrel_scp_var: rrel_fixed: _recepts;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc6;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: nrel_recepts;;
+
+            => nrel_goto: .proc_of_finding_recepts_return;;
+        *);;		
+
+
+        -> .proc_of_finding_recepts_return (*
+    	   <- return;;
+    	*);;
+    *);;
+*);;

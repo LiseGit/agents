@@ -49,7 +49,7 @@ scp_program -> proc_of_finding_daily_fats (*
             -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc1;;
             -> rrel_3: rrel_scp_var: rrel_fixed: _daily_fats;;
             -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc2;;
-            -> rrel_5: rrel_fixed: rrel_scp_const: nrel_power_set;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: rrel_gramm;;
 
             => nrel_goto: .proc_of_finding_daily_fats_return;;
         *);;		

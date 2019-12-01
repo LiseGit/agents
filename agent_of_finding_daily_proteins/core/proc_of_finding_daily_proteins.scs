@@ -1,0 +1,61 @@
+scp_program -> proc_of_finding_daily_proteins (*
+	-> rrel_params: ...(*
+    	-> rrel_1: rrel_in:  _product;;
+	   	-> rrel_2: rrel_out: _daily_proteins;;
+  	*);;
+  
+	-> rrel_operators: ...(*
+		-> rrel_init: .proc_of_finding_daily_proteins_find_proteins (*
+            <- searchElStr5;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var:   _product;;
+            -> rrel_2: rrel_assign: rrel_scp_var:   rrel_common: _arc1;;
+            -> rrel_3: rrel_assign: rrel_scp_var:   _proteins;;
+            -> rrel_4: rrel_assign: rrel_scp_var:   rrel_pos_const_perm: _arc2;;
+            -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_proteins;;
+
+            => nrel_then: .proc_of_finding_daily_proteins_part;;
+            => nrel_else: .proc_of_finding_daily_proteins_no_proteins;;
+        *);;
+
+        -> .proc_of_finding_daily_proteins_no_proteins (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _daily_proteins;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [в базе не найдено данных о жирах];;
+            
+            => nrel_goto: .proc_of_finding_daily_proteins_show_answer;;
+        *);;
+
+        -> .proc_of_finding_daily_proteins_part (*
+            <- contDiv;;
+            -> rrel_1: rrel_assign: rrel_scp_var:   _part;;
+            -> rrel_2: rrel_fixed:  rrel_scp_const: [110];;
+            -> rrel_3: rrel_fixed:  rrel_scp_var:   _proteins;;
+
+            => nrel_goto: .proc_of_finding_daily_proteins_divide;;
+        *);;
+
+        -> .proc_of_finding_daily_proteins_divide (*
+            <- contMult;;
+            -> rrel_1: rrel_assign: rrel_scp_var:   _daily_proteins;;
+            -> rrel_2: rrel_fixed:  rrel_scp_var:   _part;;
+            -> rrel_3: rrel_fixed:  rrel_scp_const: [100];;
+
+            => nrel_goto: .proc_of_finding_daily_proteins_show_answer;;
+        *);;
+
+		-> .proc_of_finding_daily_proteins_show_answer (*
+            <- genElStr5;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _product;;
+            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc1;;
+            -> rrel_3: rrel_scp_var: rrel_fixed: _daily_proteins;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc2;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: rrel_gramm;;
+
+            => nrel_goto: .proc_of_finding_daily_proteins_return;;
+        *);;		
+
+        -> .proc_of_finding_daily_proteins_return (*
+    	  <- return;;
+    	*);;
+    *);;
+*);;

@@ -28,8 +28,8 @@ scp_program -> proc_of_finding_daily_fats (*
         -> .proc_of_finding_daily_fats_part (*
             <- contDiv;;
             -> rrel_1: rrel_assign: rrel_scp_var:   _part;;
-            -> rrel_1: rrel_fixed:  rrel_scp_const: [110];;
-            -> rrel_1: rrel_fixed:  rrel_scp_var:   _fats;;
+            -> rrel_2: rrel_fixed:  rrel_scp_const: [110];;
+            -> rrel_3: rrel_fixed:  rrel_scp_var:   _fats;;
 
             => nrel_goto: .proc_of_finding_daily_fats_divide;;
         *);;

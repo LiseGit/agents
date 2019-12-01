@@ -1,0 +1,86 @@
+scp_program -> proc_of_finding_average_fpc (*
+	-> rrel_params: ...(*
+    	-> rrel_1: rrel_in:  _product;;
+	   	-> rrel_2: rrel_out: _average_fpc;;
+  	*);;
+  
+	-> rrel_operators: ...(*
+		-> rrel_init: .proc_of_finding_average_fpc_find_fats (*
+            <- searchElStr5;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var:   _product;;
+            -> rrel_2: rrel_assign: rrel_scp_var:   rrel_common: _arc1;;
+            -> rrel_3: rrel_assign: rrel_scp_var:   _fats;;
+            -> rrel_4: rrel_assign: rrel_scp_var:   rrel_pos_const_perm: _arc2;;
+            -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_fats;;
+
+            => nrel_then: .proc_of_finding_average_fpc_find_proteins;;
+            => nrel_else: .proc_of_finding_average_fpc_return;;
+        *);;
+
+        -> .proc_of_finding_average_fpc_find_proteins (*
+            <- searchElStr5;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var:   _product;;
+            -> rrel_2: rrel_assign: rrel_scp_var:   rrel_common: _arc3;;
+            -> rrel_3: rrel_assign: rrel_scp_var:   _proteins;;
+            -> rrel_4: rrel_assign: rrel_scp_var:   rrel_pos_const_perm: _arc4;;
+            -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_proteins;;
+
+            => nrel_then: .proc_of_finding_average_fpc_find_carbohydrates;;
+            => nrel_else: .proc_of_finding_average_fpc_return;;
+        *);;
+
+        -> .proc_of_finding_average_fpc_find_carbohydrates (*
+            <- searchElStr5;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var:   _product;;
+            -> rrel_2: rrel_assign: rrel_scp_var:   rrel_common: _arc3;;
+            -> rrel_3: rrel_assign: rrel_scp_var:   _carbohydrates;;
+            -> rrel_4: rrel_assign: rrel_scp_var:   rrel_pos_const_perm: _arc4;;
+            -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_carbohydrates;;
+
+            => nrel_then: .proc_of_finding_average_fpc_sum1;;
+            => nrel_else: .proc_of_finding_average_fpc_return;;
+        *);;
+
+        -> .proc_of_finding_average_fpc_sum1 (*
+			<- contAdd;;
+			-> rrel_1: rrel_assign: rrel_scp_var: _average_fpc;;
+			-> rrel_2: rrel_fixed:  rrel_scp_var: _fats;;
+			-> rrel_3: rrel_fixed:  rrel_scp_var: _proteins;;
+
+			=> nrel_goto: .proc_of_finding_average_fpc_sum2;;
+		*);;
+
+         -> .proc_of_finding_average_fpc_sum2 (*
+            <- contAdd;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _average_fpc;;
+            -> rrel_2: rrel_fixed:  rrel_scp_var: _average_fpc;;
+            -> rrel_3: rrel_fixed:  rrel_scp_var: _carbohydrates;;
+
+            => nrel_goto: .proc_of_finding_average_fpc_divide;;
+        *);;
+
+        -> .proc_of_finding_average_fpc_divide (*
+            <- contDiv;;
+            -> rrel_1: rrel_fixed: rrel_scp_var:   _average_fpc;;
+            -> rrel_2: rrel_fixed: rrel_scp_var:   _average_fpc;;
+            -> rrel_3: rrel_fixed: rrel_scp_const: [3];;
+
+            => nrel_goto: .proc_of_finding_average_fpc_show_answer;;
+        *);;
+
+		-> .proc_of_finding_average_fpc_show_answer (*
+            <- genElStr5;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _product;;
+            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc1;;
+            -> rrel_3: rrel_scp_var: rrel_fixed: _average_fpc;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc2;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: nrel_power_set;;
+
+            => nrel_goto: .proc_of_finding_average_fpc_return;;
+        *);;		
+
+        -> .proc_of_finding_average_fpc_return (*
+    	  <- return;;
+    	*);;
+    *);;
+*);;

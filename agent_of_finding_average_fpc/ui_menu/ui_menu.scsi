@@ -1,0 +1,19 @@
+ui_menu_file_for_finding_average_fpc 
+	<- 	ui_user_command_class_atom; 
+		ui_user_command_class_view_kb;
+	=> nrel_main_idtf: 
+		[Какое среднее арифмитическое жиров, белков и углеводов продукта?] (* <- lang_ru;; *);
+		[What is average arithemtical of fats, proteins and carbohydrates of product?] (* <- lang_en;; *);
+	=> ui_nrel_command_template:
+		[*
+		question_finding_average_fpc _-> ._question_finding_average_fpc
+			(*
+				_-> ui_arg_1;;
+			*);;
+		._question_finding_average_fpc _<- question;;
+		*];
+	=> ui_nrel_command_lang_template: 
+		[Запрос нахождения среднего арифмитического жиров, белков и углеводов продукта: $ui_arg_1] 
+		(* <- lang_ru;; *);
+		[What is average arithmetical of fats, proteins and carbohydrates of product $ui_arg_1] 
+		(* <- lang_en;; *);;

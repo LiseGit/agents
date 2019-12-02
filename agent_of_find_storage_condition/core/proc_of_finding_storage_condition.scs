@@ -37,11 +37,11 @@ scp_program -> proc_of_finding_storage_condition (*
         *);;
 
 	-> .proc_of_finding_storage_condition_check1 (*
-            <- ifEq;;
+            <- ifGr;;
 	    ->rrel_1: rrel_fixed: rrel_scp_var: _storage_condition;;
 	    ->rrel_2: rrel_fixed: rrel_scp_var: _temperature;;
-            => nrel_then: .proc_of_finding_storage_condition_print1;;
-            => nrel_else: .proc_of_finding_storage_condition_find2;;
+            => nrel_then: .proc_of_finding_storage_condition_find2;;
+            => nrel_else: .proc_of_finding_storage_condition_print1;;
         *);;
 
 	-> .proc_of_finding_storage_condition_print1 (*
@@ -76,11 +76,11 @@ scp_program -> proc_of_finding_storage_condition (*
         *);;
 
 	-> .proc_of_finding_storage_condition_check2 (*
-            <- ifEq;;
+            <- ifGr;;
 	    ->rrel_1: rrel_fixed: rrel_scp_var: _storage_condition;;
 	    ->rrel_2: rrel_fixed: rrel_scp_var: _temperature;;
-            => nrel_then: .proc_of_finding_storage_condition_print2;;
-            => nrel_else: .proc_of_finding_storage_condition_print3;;
+            => nrel_then: .proc_of_finding_storage_condition_print3;;
+            => nrel_else: .proc_of_finding_storage_condition_print2;;
         *);;
 
 	-> .proc_of_finding_storage_condition_print2 (*

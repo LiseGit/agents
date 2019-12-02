@@ -2,7 +2,7 @@ ui_menu_file_for_finding_storage_time
 	<- 	ui_user_command_class_atom; 
 		ui_user_command_class_view_kb;
 	=> nrel_main_idtf: 
-		[Какой срок годности продукта?] (* <- lang_ru;; *);
+		[Какой тип продукта по сроку годности?] (* <- lang_ru;; *);
 		[What is storage time of a product?] (* <- lang_en;; *);
 	=> ui_nrel_command_template:
 		[*
@@ -13,7 +13,7 @@ ui_menu_file_for_finding_storage_time
 		._question_finding_storage_time _<- question;;
 		*];
 	=> ui_nrel_command_lang_template: 
-		[Запрос нахождения срока годности продукта: $ui_arg_1] 
+		[Запрос нахождения типа продукта по сроку годности: $ui_arg_1] 
 		(* <- lang_ru;; *);
 		[What is storage time of a product: $ui_arg_1] 
 		(* <- lang_en;; *);;

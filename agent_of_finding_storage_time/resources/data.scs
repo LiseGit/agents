@@ -17,3 +17,18 @@ concept_pasta=>nrel_main_idtf:[макароны] (* <- lang_ru;; *);;
 
 concept_pasta=>nrel_storage_time:[700];;
 
+
+concept_ultra_skoroport=>nrel_idtf:[ultra skoroportyashiesya] (* <- lang_en;; *);;
+concept_ultra_skoroport=>nrel_main_idtf:[ультраскоропортящееся] (* <- lang_ru;; *);;
+
+concept_ultra_skoroport=>nrel_time_limit:[3];;
+
+concept_skoroport=>nrel_idtf:[skoroportyashiesya] (* <- lang_en;; *);;
+concept_skoroport=>nrel_main_idtf:[скоропортящееся] (* <- lang_ru;; *);;
+
+concept_skoroport=>nrel_time_limit:[30];;
+
+concept_long_keep=>nrel_idtf:[long keep] (* <- lang_en;; *);;
+concept_long_keep=>nrel_main_idtf:[длительного хранения] (* <- lang_ru;; *);;
+
+concept_long_keep=>nrel_time_limit:[1000];;

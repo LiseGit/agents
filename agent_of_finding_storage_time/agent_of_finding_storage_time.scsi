@@ -1,6 +1,6 @@
 agent_of_finding_storage_time
 => nrel_main_idtf:
-	[агентная scp-программа нахождения срока годности продукта] 
+	[агентная scp-программа нахождения типа продукта по сроку годности] 
 	(* <- lang_ru;; *);
 	[agent scp-program of finding storage time of a product] 
 	(* <- lang_en;; *);

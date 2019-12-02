@@ -1,0 +1,151 @@
+scp_program -> proc_of_finding_daily_ca_mg_fe (*
+	-> rrel_params: ...(*
+    	-> rrel_1: rrel_in:  _product;;
+	   	-> rrel_2: rrel_out: _daily_norm;;
+  	*);;
+  
+	-> rrel_operators: ...(*
+		-> rrel_init: .proc_of_finding_daily_ca_mg_fe_check_ca (*
+            <- searchElStr5;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var:   _product;;
+            -> rrel_2: rrel_assign: rrel_scp_var:   rrel_common: _arc1;;
+            -> rrel_3: rrel_assign: rrel_scp_var:   _ca;;
+            -> rrel_4: rrel_assign: rrel_scp_var:   rrel_pos_const_perm: _arc2;;
+            -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_ca;;
+
+            => nrel_then: .proc_of_finding_daily_ca_mg_fe_check_mg;;
+            => nrel_else: .proc_of_finding_daily_ca_mg_fe_no_res;;
+        *);;
+	->.proc_of_finding_daily_ca_mg_fe_check_mg (*
+            <- searchElStr5;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var:   _product;;
+            -> rrel_2: rrel_assign: rrel_scp_var:   rrel_common: _arc1;;
+            -> rrel_3: rrel_assign: rrel_scp_var:   _mg;;
+            -> rrel_4: rrel_assign: rrel_scp_var:   rrel_pos_const_perm: _arc2;;
+            -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_mg;;
+
+            => nrel_then: .proc_of_finding_daily_ca_mg_fe_check_fe;;
+            => nrel_else: .proc_of_finding_daily_ca_mg_fe_no_res;;
+        *);;
+	->.proc_of_finding_daily_ca_mg_fe_check_fe (*
+            <- searchElStr5;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var:   _product;;
+            -> rrel_2: rrel_assign: rrel_scp_var:   rrel_common: _arc1;;
+            -> rrel_3: rrel_assign: rrel_scp_var:   _fe;;
+            -> rrel_4: rrel_assign: rrel_scp_var:   rrel_pos_const_perm: _arc2;;
+            -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_fe;;
+
+            => nrel_then: .proc_of_finding_daily_ca_mg_fe_check_calories;;
+            => nrel_else: .proc_of_finding_daily_ca_mg_fe_no_res;;
+        *);;
+	->.proc_of_finding_daily_ca_mg_fe_check_calories (*
+            <- searchElStr5;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var:   _product;;
+            -> rrel_2: rrel_assign: rrel_scp_var:   rrel_common: _arc1;;
+            -> rrel_3: rrel_assign: rrel_scp_var:   _calories;;
+            -> rrel_4: rrel_assign: rrel_scp_var:   rrel_pos_const_perm: _arc2;;
+            -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_calories;;
+
+            => nrel_then: .proc_of_finding_daily_ca_mg_fe_part_ca;;
+            => nrel_else: .proc_of_finding_daily_ca_mg_fe_no_res;;
+        *);;
+        -> .proc_of_finding_daily_ca_mg_fe_no_res (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _daily_norm;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [в базе не найдено необходимых данных];;
+            
+            => nrel_goto: .proc_of_finding_daily_ca_mg_fe_show_answer;;
+        *);;
+
+        -> .proc_of_finding_daily_ca_mg_fe_part_ca (*
+            <- contDiv;;
+            -> rrel_1: rrel_assign: rrel_scp_var:   _part_ca;;
+            -> rrel_2: rrel_fixed:  rrel_scp_const: [1000];;
+            -> rrel_3: rrel_fixed:  rrel_scp_var:   _ca;;
+
+            => nrel_goto: .proc_of_finding_daily_ca_mg_fe_part_mg;;
+        *);;
+
+		-> .proc_of_finding_daily_ca_mg_fe_part_mg (*
+            <- contDiv;;
+            -> rrel_1: rrel_assign: rrel_scp_var:   _part_mg;;
+            -> rrel_2: rrel_fixed:  rrel_scp_const: [400];;
+            -> rrel_3: rrel_fixed:  rrel_scp_var:   _mg;;
+
+            => nrel_goto: .proc_of_finding_daily_ca_mg_fe_part_fe;;
+        *);;
+
+		-> .proc_of_finding_daily_ca_mg_fe_part_fe (*
+            <- contDiv;;
+            -> rrel_1: rrel_assign: rrel_scp_var:   _part_fe;;
+            -> rrel_2: rrel_fixed:  rrel_scp_const: [14];;
+            -> rrel_3: rrel_fixed:  rrel_scp_var:   _fe;;
+
+            => nrel_goto: .proc_of_finding_daily_ca_mg_fe_ifgr_ca_mg;;
+        *);;
+		-> .proc_of_finding_daily_ca_mg_fe_ifgr_ca_mg (*
+	    	<- ifGr;;
+			-> rrel_1: rrel_scp_var: _part_ca;;
+			-> rrel_2: rrel_scp_var: _part_mg;;
+
+			=> nrel_then: .proc_of_finding_daily_ca_mg_fe_ifgr_ca_fe;;
+			=> nrel_else: .proc_of_finding_daily_ca_mg_fe_ifgr_fe_mg;;
+		*);;
+		-> .proc_of_finding_daily_ca_mg_fe_ifgr_ca_fe (*
+			<- ifGr;;
+			-> rrel_1: rrel_scp_var: _part_ca;;
+			-> rrel_2: rrel_scp_var: _part_fe;;
+
+			=> nrel_then: .proc_of_finding_daily_ca_mg_fe_mult_ca;;
+			=> nrel_else: .proc_of_finding_daily_ca_mg_fe_mult_fe;;
+		*);;
+		-> .proc_of_finding_daily_ca_mg_fe_ifgr_fe_mg (*
+			<- ifGr;;
+			-> rrel_1: rrel_scp_var: _part_fe;;
+			-> rrel_2: rrel_scp_var: _part_mg;;
+
+			=> nrel_then: .proc_of_finding_daily_ca_mg_fe_mult_fe;;
+			=> nrel_else: .proc_of_finding_daily_ca_mg_fe_mult_mg;;
+		*);;
+        -> .proc_of_finding_daily_ca_mg_fe_mult_ca (*
+            <- contMult;;
+            -> rrel_1: rrel_assign: rrel_scp_var:   _daily_norm;;
+            -> rrel_2: rrel_fixed:  rrel_scp_var:   _part_ca;;
+            -> rrel_3: rrel_fixed:  rrel_scp_var:   _calories;;
+
+            => nrel_goto: .proc_of_finding_daily_ca_mg_fe_show_answer;;
+        *);;
+		-> .proc_of_finding_daily_ca_mg_fe_mult_mg (*
+            <- contMult;;
+            -> rrel_1: rrel_assign: rrel_scp_var:   _daily_norm;;
+            -> rrel_2: rrel_fixed:  rrel_scp_var:   _part_mg;;
+            -> rrel_3: rrel_fixed:  rrel_scp_var:   _calories;;
+
+            => nrel_goto: .proc_of_finding_daily_ca_mg_fe_show_answer;;
+        *);;
+		-> .proc_of_finding_daily_ca_mg_fe_mult_fe (*
+            <- contMult;;
+            -> rrel_1: rrel_assign: rrel_scp_var:   _daily_norm;;
+            -> rrel_2: rrel_fixed:  rrel_scp_var:   _part_fe;;
+            -> rrel_3: rrel_fixed:  rrel_scp_var:   _calories;;
+
+            => nrel_goto: .proc_of_finding_daily_ca_mg_fe_show_answer;;
+        *);;
+
+
+		-> .proc_of_finding_daily_ca_mg_fe_show_answer (*
+            <- genElStr5;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _product;;
+            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc1;;
+            -> rrel_3: rrel_scp_var: rrel_fixed: _daily_norm;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc2;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: nrel_calories_of_daily_ca_mg_fe;;
+
+            => nrel_goto: .proc_of_finding_daily_ca_mg_fe_return;;
+        *);;		
+
+        -> .proc_of_finding_daily_ca_mg_fe_return (*
+    	  <- return;;
+    	*);;
+    *);;
+*);;

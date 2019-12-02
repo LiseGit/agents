@@ -1,0 +1,18 @@
+    ui_menu_na_view_kb_cooking <- ui_user_command_class_noatom;;
+    ui_menu_na_view_kb_cooking => nrel_main_idtf: [Команды для кулинарии] (* <- lang_ru;; *);;
+    ui_menu_na_view_kb_cooking => nrel_main_idtf: [Command to cooking] (* <- lang_en;; *);;
+    ui_menu_na_view_kb_cooking <= nrel_ui_commands_decomposition:
+    {
+ui_menu_file_for_finding_daily_ca_mg_fe;
+ui_menu_file_for_finding_average_fpc;
+ui_menu_file_for_finding_calories_per_cost;
+ui_menu_file_for_finding_daily_calories;
+ui_menu_file_for_finding_daily_carbohydrates;
+ui_menu_file_for_finding_daily_fats;
+ui_menu_file_for_finding_daily_proteins;
+ui_menu_file_for_finding_products_without_definition;
+ui_menu_file_for_finding_recepts;
+ui_menu_file_for_finding_statistic;
+ui_menu_file_for_finding_storage_time;
+ui_menu_file_for_finding_storage_condition
+    };;

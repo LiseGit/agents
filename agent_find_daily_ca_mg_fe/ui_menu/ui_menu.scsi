@@ -1,0 +1,19 @@
+ui_menu_file_for_finding_daily_ca_mg_fe 
+	<- 	ui_user_command_class_atom; 
+		ui_user_command_class_view_kb;
+	=> nrel_main_idtf: 
+		[Сколько калорий в объёме данного продукта, покрывающем дневную норму кальция, магния и железа?] (* <- lang_ru;; *);
+		[How much need to eat for Ca, Mg and Fe?] (* <- lang_en;; *);
+	=> ui_nrel_command_template:
+		[*
+		question_finding_daily_ca_mg_fe _-> ._question_finding_daily_ca_mg_fe
+			(*
+				_-> ui_arg_1;;
+			*);;
+		._question_finding_daily_ca_mg_fe _<- question;;
+		*];
+	=> ui_nrel_command_lang_template: 
+		[Запрос калорийности $ui_arg_1 в объёме  покрывающем дневную норму кальция, магния и железа.] 
+		(* <- lang_ru;; *);
+		[How much calories in a volume covering the daily rate of calcium, magnesium and iron of $ui_arg_1 ?] 
+		(* <- lang_en;; *);;

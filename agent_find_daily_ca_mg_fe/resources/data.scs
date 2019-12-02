@@ -1,0 +1,45 @@
+sc_node_norole_relation->nrel_ca;;
+nrel_ca=>nrel_main_idtf:
+[содержание кальция*](* <-lang_ru;; *);;
+
+sc_node_norole_relation->nrel_fe;;
+nrel_fe=>nrel_main_idtf:
+[содержание железа*](* <-lang_ru;; *);;
+
+sc_node_norole_relation->nrel_mg;;
+nrel_mg=>nrel_main_idtf:
+[содержание магния*](* <-lang_ru;; *);;
+
+sc_node_norole_relation->nrel_calories_of_daily_ca_mg_fe;;
+nrel_calories_of_daily_ca_mg_fe=>nrel_main_idtf:
+[калорийность в объёме покрывающем дневную норму кальция, магния и железа*](* <-lang_ru;; *);;
+
+sc_node_not_relation -> concept_rice;;
+concept_rice => nrel_main_idtf:
+[рис] (* <- lang_ru;; *);
+[rice] (* <- lang_en;; *);;
+
+sc_node_not_relation -> concept_sesame;;
+concept_sesame => nrel_main_idtf:
+[кунжут] (* <- lang_ru;; *);
+[sesame] (* <- lang_en;; *);;
+
+concept_milk=>nrel_ca:[1000];
+=>nrel_mg:[14];
+=>nrel_fe:[1];
+=>nrel_calories:[54];;
+
+concept_beef=>nrel_ca:[5];
+=>nrel_mg:[22];
+=>nrel_fe:[3];
+=>nrel_calories:[254];;
+
+concept_rice=>nrel_ca:[40];
+=>nrel_mg:[14];
+=>nrel_fe:[2];
+=>nrel_calories:[303];;
+
+concept_sesame=>nrel_ca:[1474];
+=>nrel_mg:[135];
+=>nrel_fe:[16];
+=>nrel_calories:[565];;

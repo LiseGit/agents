@@ -1,0 +1,61 @@
+scp_program -> proc_of_finding_daily_calories (*
+	-> rrel_params: ...(*
+    	-> rrel_1: rrel_in:  _product;;
+	   	-> rrel_2: rrel_out: _daily_calories;;
+  	*);;
+  
+	-> rrel_operators: ...(*
+		-> rrel_init: .proc_of_finding_daily_calories_find_calories (*
+            <- searchElStr5;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var:   _product;;
+            -> rrel_2: rrel_assign: rrel_scp_var:   rrel_common: _arc1;;
+            -> rrel_3: rrel_assign: rrel_scp_var:   _calories;;
+            -> rrel_4: rrel_assign: rrel_scp_var:   rrel_pos_const_perm: _arc2;;
+            -> rrel_5: rrel_fixed:  rrel_scp_const: nrel_calories;;
+
+            => nrel_then: .proc_of_finding_daily_calories_part;;
+            => nrel_else: .proc_of_finding_daily_calories_no_calories;;
+        *);;
+
+        -> .proc_of_finding_daily_calories_no_calories (*
+            <- varAssign;;
+            -> rrel_1: rrel_assign: rrel_scp_var: _daily_calories;;
+            -> rrel_2: rrel_fixed: rrel_scp_const: [в базе не найдено данных о жирах];;
+            
+            => nrel_goto: .proc_of_finding_daily_calories_show_answer;;
+        *);;
+
+        -> .proc_of_finding_daily_calories_part (*
+            <- contDiv;;
+            -> rrel_1: rrel_assign: rrel_scp_var:   _part;;
+            -> rrel_2: rrel_fixed:  rrel_scp_const: [110];;
+            -> rrel_3: rrel_fixed:  rrel_scp_var:   _calories;;
+
+            => nrel_goto: .proc_of_finding_daily_calories_divide;;
+        *);;
+
+        -> .proc_of_finding_daily_calories_divide (*
+            <- contMult;;
+            -> rrel_1: rrel_assign: rrel_scp_var:   _daily_calories;;
+            -> rrel_2: rrel_fixed:  rrel_scp_var:   _part;;
+            -> rrel_3: rrel_fixed:  rrel_scp_const: [100];;
+
+            => nrel_goto: .proc_of_finding_daily_calories_show_answer;;
+        *);;
+
+		-> .proc_of_finding_daily_calories_show_answer (*
+            <- genElStr5;;
+            -> rrel_1: rrel_fixed: rrel_scp_var: _product;;
+            -> rrel_2: rrel_scp_var: rrel_assign: rrel_common: rrel_const: _arc1;;
+            -> rrel_3: rrel_scp_var: rrel_fixed: _daily_calories;;
+            -> rrel_4: rrel_scp_var: rrel_assign: rrel_pos_const_perm: _arc2;;
+            -> rrel_5: rrel_fixed: rrel_scp_const: rrel_gramm;;
+
+            => nrel_goto: .proc_of_finding_daily_calories_return;;
+        *);;		
+
+        -> .proc_of_finding_daily_calories_return (*
+    	  <- return;;
+    	*);;
+    *);;
+*);;

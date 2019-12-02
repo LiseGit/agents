@@ -35,7 +35,7 @@ scp_program -> proc_of_finding_daily_calories (*
         *);;
 
         -> .proc_of_finding_daily_calories_mass_and_number (*
-            <- contSum;;
+            <- contAdd;;
             -> rrel_1: rrel_fixed:  rrel_scp_var:   _daily_calories;;
             -> rrel_2: rrel_fixed:  rrel_scp_var:   _daily_calories;;
             -> rrel_3: rrel_fixed:  rrel_scp_const: [447.6];;
@@ -63,15 +63,15 @@ scp_program -> proc_of_finding_daily_calories (*
 
         -> .proc_of_finding_daily_calories_activity2 (*
             <- contMult;;
-            -> rrel_1: rrel_assign: rrel_scp_var: _activity;;
-            -> rrel_2: rrel_fixed:  rrel_scp_var: _activity;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var:  _activity;;
+            -> rrel_2: rrel_fixed:  rrel_scp_var:  _activity;;
             -> rrel_3: rrel_fixed:  rrel_scp_const: [1.375];;
 
             => nrel_goto: .proc_of_finding_daily_calories_first;;
         *);;
 
         -> .proc_of_finding_daily_calories_first (*
-            <- contSum;;
+            <- contAdd;;
             -> rrel_1: rrel_fixed:  rrel_scp_var: _daily_calories;;
             -> rrel_2: rrel_fixed:  rrel_scp_var: _height;;
             -> rrel_3: rrel_fixed:  rrel_scp_var: _daily_calories;;
@@ -80,7 +80,7 @@ scp_program -> proc_of_finding_daily_calories (*
         *);;
 
         -> .proc_of_finding_daily_calories_second (*
-            <- contDiff;;
+            <- contSub;;
             -> rrel_1: rrel_fixed:  rrel_scp_var:   _daily_calories;;
             -> rrel_2: rrel_fixed:  rrel_scp_var:   _daily_calories;;
             -> rrel_3: rrel_fixed:  rrel_scp_var:   _activity;;
@@ -94,7 +94,16 @@ scp_program -> proc_of_finding_daily_calories (*
             -> rrel_2: rrel_fixed:  rrel_scp_var:   _daily_calories;;
             -> rrel_3: rrel_fixed:  rrel_scp_var:   _calories;;
 
-            => nrel_goto: .proc_of_finding_daily_calories_divide;;
+            => nrel_goto: .proc_of_finding_daily_calories_4;;
+        *);;
+
+        -> .proc_of_finding_daily_calories_4 (*
+            <- contMult;;
+            -> rrel_1: rrel_fixed:  rrel_scp_var:   _daily_calories;;
+            -> rrel_2: rrel_fixed:  rrel_scp_var:   _daily_calories;;
+            -> rrel_3: rrel_fixed:  rrel_scp_const:  [100];;
+
+            => nrel_goto: .proc_of_finding_daily_calories_show_answer;;
         *);;
 
 		-> .proc_of_finding_daily_calories_show_answer (*

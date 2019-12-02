@@ -32,3 +32,4 @@ concept_meat=>nrel_main_idtf:[мясо] (* <- lang_ru;; *);;
 concept_meat=>nrel_fats:[100];;
 concept_meat=>nrel_proteins:[300];;
 concept_meat=>nrel_carbohydrates:[50];;
+concept_meat=>nrel_calories:[300];;
